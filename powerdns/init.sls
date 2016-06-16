@@ -7,7 +7,9 @@
 powerdns:
   pkg.installed:
     - name: {{ package.get('name') }}
+{% if package.get('version') is not none %}
     - version: {{ package.get('version') }}
+{% endif %}
 
   service.running:
     - name: {{ service }}
