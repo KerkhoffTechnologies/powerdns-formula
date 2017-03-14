@@ -15,6 +15,7 @@
             'backend_pipe_pkg': 'pdns-backend-pipe',
             'backend_remote_pkg': 'pdns-backend-remote',
             'backend_sqlite3_pkg': 'pdns-backend-sqlite3',
+            'backend_sqlite3_file': '/srv/powerdns/powerdns.sqlite3',
         },
         'RedHat': {
             'pkg': 'pdns',
@@ -31,16 +32,20 @@
             'backend_pipe_pkg': 'pdns-backend-pipe',
             'backend_remote_pkg': 'pdns-backend-remote',
             'backend_sqlite3_pkg': 'pdns-backend-sqlite3',
+            'backend_sqlite3_file': '/srv/powerdns/powerdns.sqlite3',
         },
     }),
     'config': salt['grains.filter_by']({
         'Debian': {
             'config-dir': '/etc/powerdns',
+            'include-dir': '/etc/powerdns/pdns.d',
             'setgid': 'pdns',
             'setuid': 'pdns',
             'launch': '',
         },
         'RedHat': {
+            'config-dir': '/etc/powerdns',
+            'include-dir': '/etc/powerdns/pdns.d',
             'daemon': 'no',
             'guardian': 'no',
             'setgid': 'pdns',
