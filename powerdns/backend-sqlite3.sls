@@ -1,5 +1,5 @@
 {% from "powerdns/map.jinja" import powerdns with context %}
-
+{% set sqlite_data_dir = salt['file.basename'](powerdns.lookup.backend_sqlite3_file) %}
 include:
   - powerdns.config
 
@@ -20,6 +20,13 @@ powerdns_config_sqlite3:
     - source: salt://powerdns/templates/pdns_sqlite.conf.jinja
     - makedirs: True
 
+powerdns_directory_sqlite3:
+  file.directory:
+    - name: {{ sqlite_data_dir }}
+    - user: {{ powerdns.config.setuid }}
+    - group: {{ powerdns.config.setuid }}
+    - makedirs: True
+
 powerdns_schema_sqlite3:
   cmd.script:
     - source: salt://powerdns/files/sqlite_schema_load.sh
@@ -28,5 +35,5 @@ powerdns_schema_sqlite3:
     - creates: {{ powerdns.lookup.backend_sqlite3_file }}
     - require:
       - pkg: {{ powerdns.lookup.backend_sqlite3_pkg }}
-
+      - file: {{ sqlite_data_dir }}
 
