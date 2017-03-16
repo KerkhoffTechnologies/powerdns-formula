@@ -1,5 +1,5 @@
 {% from "powerdns/map.jinja" import powerdns with context %}
-{% set sqlite_data_dir = salt['file.basename'](powerdns.lookup.backend_sqlite3_file) %}
+{% set sqlite_data_dir = salt['file.dirname'](powerdns.lookup.backend_sqlite3_file) %}
 include:
   - powerdns.config
 
