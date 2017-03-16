@@ -1,9 +1,0 @@
-roles:
-- powerdns
-powerdns:
-  role: master
-  local-address: 192.168.23.1
-  backend: bind
-  axfr-ips:
-  - 127.0.0.1
-  - 192.168.21.1
