@@ -1,5 +1,11 @@
 {% from "powerdns/map.jinja" import powerdns with context %}
 
+{% if salt['grains.get']('os_family') == 'Debian' %}
+powerdns_apt_https:
+  pkg.installed:
+    - name: apt-transport-https
+{% endif %}
+
 powerdns_server_repo:
   pkgrepo.managed:
     - humanname: PowerDNS
@@ -8,6 +14,8 @@ powerdns_server_repo:
     - file: /etc/apt/sources.list.d/powerdns.list
     - keyid: {{ powerdns.repo.keyid }}
     - keyserver: keys.gnupg.net
+    - require:
+      - pkg: apt-transport-https
     {% elif salt['grains.get']('os_family') == 'RedHat' %}
     {# TODO: add RHEL/CentOS support #}
     {% endif %}
