@@ -19,7 +19,7 @@ recursor:
 recursor_config:
   file.managed:
     - name: {{ powerdns.lookup.config_file_recursor }}
-    - source: salt://powerdns/templates/recursor.conf
+    - source: salt://powerdns/templates/recursor.conf.jinja
     - template: jinja
     - user: root
     - group: root
