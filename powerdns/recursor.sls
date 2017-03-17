@@ -14,12 +14,12 @@ recursor:
     - name: {{ powerdns.lookup.service_recursor }}
     - enable: True
     - require:
-      - pkg: powerdns
+      - pkg: recursor
 
 recursor_config:
   file.managed:
     - name: {{ powerdns.lookup.config_file_recursor }}
-    - source: salt://powerdns/files/recursor.conf
+    - source: salt://powerdns/templates/recursor.conf
     - template: jinja
     - user: root
     - group: root
