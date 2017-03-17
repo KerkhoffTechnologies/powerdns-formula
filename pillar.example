@@ -16,3 +16,6 @@ powerdns:
     gmysql-user: pdns
     gmysql-password: mys3cr3tdbp4ssw0rd
     gmysql-dnssec: 'yes'
+
+  recursor:
+    forward-zones=example.org=10.123.123.123

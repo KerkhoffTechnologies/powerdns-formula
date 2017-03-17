@@ -2,7 +2,9 @@
     'lookup': salt['grains.filter_by']({
         'Debian': {
             'pkg': 'pdns-server',
+            'pkg_recursor': 'pdns-recursor',
             'config_file': '/etc/powerdns/pdns.conf',
+            'config_file_recursor': '/etc/powerdns/recursor.conf',
             'service': 'pdns',
             'backend_geoip_pkg': 'pdns-backend-geoip',
             'backend_ldap_pkg': 'pdns-backend-ldap',
@@ -21,6 +23,8 @@
             'pkg': 'pdns',
             'config_file': '/etc/pdns/pdns.conf',
             'service': 'pdns',
+            'pkg_recursor': 'pdns-recursor',
+            'config_file_recursor': '/etc/powerdns/recursor.conf',
             'backend_geoip_pkg': 'pdns-backend-geoip',
             'backend_ldap_pkg': 'pdns-backend-ldap',
             'backend_lua_pkg': 'pdns-backend-lua',

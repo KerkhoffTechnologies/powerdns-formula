@@ -1,0 +1,6 @@
+{%- from "powerdns/map.jinja" import powerdns with context -%}
+# THIS FILE IS MANAGED BY SALT
+
+{%- for key, value in powerdns.recursor|dictsort %}
+{{ key }}={{ value }}
+{%- endfor %}
